@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Secret Code</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         HOME
+    ========================== -->
+
+    <div id="homePage" class="home-page">
+
+        <div class="home-content">
+
+            <div class="logo">
+                💌
+            </div>
+
+            <h1>
+                Secret Code
+            </h1>
+
+            <p>
+                ระบบพี่รหัส - น้องรหัส
+            </p>
+
+            <button
+                class="start-button"
+                onclick="openRolePopup()">
+
+                เริ่มใช้งาน
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         ROLE POPUP
+    ========================== -->
+
+    <div id="rolePopup" class="popup">
+
+        <div class="popup-box">
+
+            <div class="popup-icon">
+                🎓
+            </div>
+
+            <h2>
+                เลือกบทบาทของคุณ
+            </h2>
+
+            <p>
+                คุณต้องการเข้าใช้งานในฐานะอะไร?
+            </p>
+
+
+            <button
+                class="role-button"
+                onclick="chooseRole('senior')">
+
+                <span class="role-icon">
+                    👨‍🎓
+                </span>
+
+                <span class="role-text">
+
+                    <strong>
+                        พี่รหัส
+                    </strong>
+
+                    <small>
+                        เขียนคำใบ้ให้น้อง
+                    </small>
+
+                </span>
+
+            </button>
+
+
+            <button
+                class="role-button"
+                onclick="chooseRole('junior')">
+
+                <span class="role-icon">
+                    👶
+                </span>
+
+                <span class="role-text">
+
+                    <strong>
+                        น้องรหัส
+                    </strong>
+
+                    <small>
+                        ดูคำใบ้ของตัวเอง
+                    </small>
+
+                </span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         SENIOR PAGE
+    ========================== -->
+
+    <div
+        id="seniorPage"
+        class="page">
+
+        <div class="container">
+
+            <div class="card">
+
+                <div class="page-icon">
+                    👨‍🎓
+                </div>
+
+                <h2>
+                    พี่รหัส
+                </h2>
+
+                <p class="description">
+                    เขียนคำใบ้ให้น้องรหัสของคุณ
+                </p>
+
+
+                <!-- ชื่อพี่ -->
+
+                <label>
+                    ชื่อพี่รหัส
+                </label>
+
+                <input
+                    id="seniorName"
+                    type="text"
+                    placeholder="กรอกชื่อพี่รหัส">
+
+
+                <!-- ชื่อน้อง -->
+
+                <label>
+                    ชื่อน้องรหัส
+                </label>
+
+                <input
+                    id="juniorName"
+                    type="text"
+                    placeholder="กรอกชื่อน้องรหัส">
+
+
+                <!-- คำใบ้ -->
+
+                <label>
+                    คำใบ้
+                </label>
+
+                <textarea
+                    id="clueText"
+                    placeholder="เขียนคำใบ้ให้น้องรหัส..."></textarea>
+
+
+                <!-- ปุ่มบันทึก -->
+
+                <button
+                    id="saveButton"
+                    class="main-button"
+                    onclick="saveClue()">
+
+                    💌 บันทึกคำใบ้
+
+                </button>
+
+
+                <!-- ปุ่มกลับ -->
+
+                <button
+                    class="back-button"
+                    onclick="goBack()">
+
+                    ← กลับไปเลือกบทบาท
+
+                </button>
+
+            </div>
+
+
+            <!-- รายการคำใบ้ -->
+
+            <div class="card">
+
+                <h3>
+                    📝 คำใบ้ของฉัน
+                </h3>
+
+                <div id="seniorClueList">
+
+                    <p class="empty">
+                        ยังไม่มีคำใบ้
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         JUNIOR PAGE
+    ========================== -->
+
+    <div
+        id="juniorPage"
+        class="page">
+
+        <div class="container">
+
+            <div class="card">
+
+                <div class="page-icon">
+                    👶
+                </div>
+
+                <h2>
+                    น้องรหัส
+                </h2>
+
+                <p class="description">
+                    ใส่ชื่อของตัวเองเพื่อดูคำใบ้
+                </p>
+
+
+                <label>
+                    ชื่อน้องรหัส
+                </label>
+
+                <input
+                    id="searchName"
+                    type="text"
+                    placeholder="กรอกชื่อของตัวเอง">
+
+
+                <button
+                    class="main-button"
+                    onclick="searchClue()">
+
+                    🔍 ดูคำใบ้ของฉัน
+
+                </button>
+
+
+                <button
+                    class="back-button"
+                    onclick="goBack()">
+
+                    ← กลับไปเลือกบทบาท
+
+                </button>
+
+            </div>
+
+
+            <!-- ผลลัพธ์ -->
+
+            <div
+                id="juniorResult"
+                class="card">
+
+                <p class="empty">
+                    กรุณาใส่ชื่อของคุณ
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- JavaScript -->
+
+    <script src="js/script.js"></script>
+
+</body>
+
+</html>
